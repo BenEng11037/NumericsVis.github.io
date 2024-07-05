@@ -9,6 +9,7 @@ function clearCanvas() {
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, width, height);
     ctx.closePath();
+    drawAxes();
 }
 clearCanvas();
 
@@ -75,6 +76,27 @@ function drawPoint(x, y) {
     console.log(`Drawing point at (${x}, ${y})`);
     ctx.fillStyle = "white";
     ctx.fillRect(x * 10, height - y * 10, 2, 2);  // Adjust scaling as necessary
+}
+
+function drawLine(x1, y1, x2, y2) {
+    ctx.beginPath();
+    ctx.moveTo(x1 * 10, height - y1 * 10);
+    ctx.lineTo(x2 * 10, height - y2 * 10);
+    ctx.strokeStyle = "white";
+    ctx.stroke();
+}
+
+function drawAxes() {
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    // X-axis
+    ctx.moveTo(0, height / 2);
+    ctx.lineTo(width, height / 2);
+    // Y-axis
+    ctx.moveTo(width / 2, 0);
+    ctx.lineTo(width / 2, height);
+    ctx.stroke();
+    ctx.closePath();
 }
 
 function drawGraph() {
