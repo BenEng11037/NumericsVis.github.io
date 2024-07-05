@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 
 var width = canvas.width, height = canvas.height;
 var backgroundColor = "rgb(49, 49, 49)";
+var numberOfSteps = parseInt(document.getElementById("numberOfSteps").value); // Initialize with input value
 var scaleFactor = width / numberOfSteps;  // Initial scale factor
 
 function clearCanvas() {
@@ -22,7 +23,6 @@ var differentialEquationInput = document.getElementById("differentialEquation");
 var startBtn = document.getElementById("startBtn");
 
 var delay = parseFloat(delayInput.value);
-var numberOfSteps = parseInt(numberOfStepsInput.value);
 var stepSize = parseFloat(stepSizeInput.value);
 var running = false;
 
