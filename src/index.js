@@ -3,6 +3,7 @@ var ctx = canvas.getContext("2d");
 
 var width = canvas.width, height = canvas.height;
 var backgroundColor = "rgb(49, 49, 49)";
+var scaleFactor = width / numberOfSteps;  // Initial scale factor
 
 function clearCanvas() {
     ctx.beginPath();
@@ -29,6 +30,7 @@ numberOfStepsInput.onchange = e => {
     let n = parseInt(e.target.value);
     if (n != null && numberOfSteps != n) {
         numberOfSteps = n;
+        scaleFactor = width / numberOfSteps;  // Update scale factor
         clearCanvas();
     }
 }
@@ -78,13 +80,13 @@ function stopRunning() {
 function drawPoint(x, y) {
     console.log(`Drawing point at (${x}, ${y})`);
     ctx.fillStyle = "white";
-    ctx.fillRect(x, y, 2, 2);  // Adjust scaling as necessary
+    ctx.fillRect(x * scaleFactor, height - y * scaleFactor, 2, 2);  // Adjust scaling as necessary
 }
 
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
+    ctx.moveTo(x1 * scaleFactor, height - y1 * scaleFactor);
+    ctx.lineTo(x2 * scaleFactor, height - y2 * scaleFactor);
     ctx.strokeStyle = "white";
     ctx.stroke();
 }
@@ -93,11 +95,11 @@ function drawAxes() {
     ctx.beginPath();
     ctx.strokeStyle = "white";
     // X-axis
-    ctx.moveTo(0,0);
-    ctx.lineTo(0, height);
+    ctx.moveTo(0, height);
+    ctx.lineTo(width, height);
     // Y-axis
     ctx.moveTo(0, 0);
-    ctx.lineTo(0, width);
+    ctx.lineTo(0, height);
     ctx.stroke();
     ctx.closePath();
 }
