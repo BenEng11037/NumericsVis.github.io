@@ -1,2 +1,3 @@
-# NumericsVis.github.io
-Numerical Method Visualizer.
+# Numerical Method Visualizer
+
+Currently In Progress.
