@@ -93,11 +93,11 @@ function drawAxes() {
     ctx.beginPath();
     ctx.strokeStyle = "white";
     // X-axis
-    ctx.moveTo(0, height / 2);
-    ctx.lineTo(width, height / 2);
+    ctx.moveTo(0, height);
+    ctx.lineTo(width, height);
     // Y-axis
-    ctx.moveTo(width / 2, 0);
-    ctx.lineTo(width / 2, height);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, height);
     ctx.stroke();
     ctx.closePath();
 }
