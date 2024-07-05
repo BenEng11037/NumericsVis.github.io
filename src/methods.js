@@ -26,8 +26,3 @@ async function eulerMethod(f, x0, y0) {
     }
     stopRunning();
 }
-
-// Example differential equation function dy/dx = f(x, y)
-function differentialEquation(x, y) {
-    return x + y;  // Replace with function
-}

@@ -17,6 +17,7 @@ var sortingAlgoInput = document.getElementById("sortingAlgoInput");
 var delayInput = document.getElementById("delayInput");
 var numberOfStepsInput = document.getElementById("numberOfSteps");
 var stepSizeInput = document.getElementById("stepSize");
+var differentialEquationInput = document.getElementById("differentialEquation");
 var startBtn = document.getElementById("startBtn");
 
 var delay = parseFloat(delayInput.value);
@@ -54,6 +55,8 @@ startBtn.onclick = () => {
         switch (sortingAlgoInput.value) {
             case "Euler Method":
                 console.log("Starting Euler Method");
+                const equationString = differentialEquationInput.value;
+                const differentialEquation = parseEquation(equationString);
                 eulerMethod(differentialEquation, 0, 1);  // Provide initial x0 and y0 values
                 break;
             default:
@@ -108,4 +111,9 @@ async function sleep() {
     return new Promise(resolve => {
         setTimeout(() => resolve(2), delay);
     });
+}
+
+function parseEquation(equationString) {
+    const compiledEquation = math.compile(equationString);
+    return (x, y) => compiledEquation.evaluate({ x, y });
 }
