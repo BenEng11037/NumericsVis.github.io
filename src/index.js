@@ -78,13 +78,13 @@ function stopRunning() {
 function drawPoint(x, y) {
     console.log(`Drawing point at (${x}, ${y})`);
     ctx.fillStyle = "white";
-    ctx.fillRect(x * 10, height - y * 10, 2, 2);  // Adjust scaling as necessary
+    ctx.fillRect(x, y, 2, 2);  // Adjust scaling as necessary
 }
 
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
-    ctx.moveTo(x1 * 10, height - y1 * 10);
-    ctx.lineTo(x2 * 10, height - y2 * 10);
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
     ctx.strokeStyle = "white";
     ctx.stroke();
 }
@@ -93,11 +93,11 @@ function drawAxes() {
     ctx.beginPath();
     ctx.strokeStyle = "white";
     // X-axis
-    ctx.moveTo(0, height);
-    ctx.lineTo(width, height);
+    ctx.moveTo(0,0);
+    ctx.lineTo(0, height);
     // Y-axis
     ctx.moveTo(0, 0);
-    ctx.lineTo(0, height);
+    ctx.lineTo(0, width);
     ctx.stroke();
     ctx.closePath();
 }
