@@ -52,6 +52,7 @@ startBtn.onclick = () => {
         startBtn.style.backgroundColor = "darkred";
         switch (sortingAlgoInput.value) {
             case "Euler Method":
+                console.log("Starting Euler Method");
                 eulerMethod(differentialEquation, 0, 1);  // Provide initial x0 and y0 values
                 break;
             default:
@@ -71,10 +72,18 @@ function stopRunning() {
 }
 
 function drawPoint(x, y) {
+    console.log(`Drawing point at (${x}, ${y})`);
     ctx.fillStyle = "white";
     ctx.fillRect(x * 10, height - y * 10, 2, 2);  // Adjust scaling as necessary
 }
 
 function drawGraph() {
     console.log('Graph updated');
+}
+
+async function sleep() {
+    if (delay == 0) return;
+    return new Promise(resolve => {
+        setTimeout(() => resolve(2), delay);
+    });
 }
