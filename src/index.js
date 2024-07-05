@@ -1,110 +1,74 @@
-var canvas = document.getElementById("canvas")
-var ctx = canvas.getContext("2d")
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
-var width = canvas.width, height = canvas.height
-var backgroundColor = "rgb(49, 49, 49)"
+var width = canvas.width, height = canvas.height;
+var backgroundColor = "rgb(49, 49, 49)";
 
 function clearCanvas() {
-    ctx.beginPath()
-    ctx.fillStyle = backgroundColor
-    ctx.fillRect(0, 0, width, height)
-    ctx.closePath()
+    ctx.beginPath();
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, width, height);
+    ctx.closePath();
 }
-clearCanvas()
+clearCanvas();
 
-var sortingAlgoInput = document.getElementById("sortingAlgoInput")
-var delayInput = document.getElementById("delayInput")
-var numberOfElementsInput = document.getElementById("numberOfElementsInput")
-var randomizeBtn = document.getElementById("randomizeBtn")
-var startBtn = document.getElementById("startBtn")
+var sortingAlgoInput = document.getElementById("sortingAlgoInput");
+var delayInput = document.getElementById("delayInput");
+var numberOfStepsInput = document.getElementById("numberOfSteps");
+var stepSizeInput = document.getElementById("stepSize");
+var startBtn = document.getElementById("startBtn");
 
-var array = []
-let lastArray = array  // for smarter rerendering
-var delay = parseFloat(delayInput.value)
-var numberOfElements = parseInt(numberOfElementsInput.value)
-var barColor = "white"
-var running = false
+var delay = parseFloat(delayInput.value);
+var numberOfSteps = parseInt(numberOfStepsInput.value);
+var stepSize = parseFloat(stepSizeInput.value);
+var running = false;
 
-//#region array/core stuff
-
-function drawBar(index, value, color=barColor) {
-    ctx.beginPath()
-    ctx.fillStyle = backgroundColor
-    ctx.fillRect(width / numberOfElements * index, height, width / numberOfElements, -height)
-    ctx.fillStyle = color
-    ctx.fillRect(width / numberOfElements * index, height, width / numberOfElements, height / numberOfElements * (value + 1) * -1)
-    ctx.closePath()
-}
-
-var lastSelected = -1
-function drawSelected(index) {
-    drawBar(lastSelected, array[lastSelected])
-    drawBar(index, array[index], color="red")
-    lastSelected = index
-}
-
-function drawArray() {
-    for (let i = 0; i < numberOfElements; i++) {
-        if (lastArray[i] != array[i]) {
-            drawBar(i, array[i])
-            lastArray[i] = array[i]
-        }
+numberOfStepsInput.onchange = e => {
+    let n = parseInt(e.target.value);
+    if (n != null && numberOfSteps != n) {
+        numberOfSteps = n;
+        clearCanvas();
     }
-    drawBar(lastSelected, array[lastSelected])
 }
 
-async function sleep() {
-    if (delay == 0) return
-    return new Promise(resolve => {
-        setTimeout(() => resolve(2), delay)
-    })
-}
-
-//#endregion
-
-//#region html element stuff
-
-numberOfElementsInput.onchange = e => {
-    let n = parseInt(e.target.value)
-    if (n != null && numberOfElements != n) {
-        numberOfElements = n
-        clearCanvas()
+stepSizeInput.onchange = e => {
+    let h = parseFloat(e.target.value);
+    if (h != null && stepSize != h) {
+        stepSize = h;
     }
 }
 
 delayInput.onchange = e => {
-    let d = parseFloat(e.target.value)
+    let d = parseFloat(e.target.value);
     if (d != null && delay != d) {
-        delay = d
+        delay = d;
     }
 }
 
 startBtn.onclick = () => {
-    running = !running
+    running = !running;
     if (running) {
-        startBtn.textContent = "Stop"
-        startBtn.style.backgroundColor = "darkred"
-        switch(sortingAlgoInput.value) {
+        startBtn.textContent = "Stop";
+        startBtn.style.backgroundColor = "darkred";
+        switch (sortingAlgoInput.value) {
             case "Euler Method":
-                eulerMethod(differentialEquation, 0, 1)  // Provide initial x0 and y0 values
-                break
+                eulerMethod(differentialEquation, 0, 1);  // Provide initial x0 and y0 values
+                break;
             default:
-                console.log("Woopsie :(")
-                break
+                console.log("Woopsie :(");
+                break;
         }
     } else {
-        stopRunning()
+        stopRunning();
     }
 }
 
 function stopRunning() {
-    console.log("stopping")
-    startBtn.textContent= "Start"
-    startBtn.style.backgroundColor = "darkgreen"
-    running = false
+    console.log("stopping");
+    startBtn.textContent = "Start";
+    startBtn.style.backgroundColor = "darkgreen";
+    running = false;
 }
-
-//#endregion
 
 function drawPoint(x, y) {
     ctx.fillStyle = "white";
@@ -112,5 +76,5 @@ function drawPoint(x, y) {
 }
 
 function drawGraph() {
-    console.log('Graph updated');  
+    console.log('Graph updated');
 }
