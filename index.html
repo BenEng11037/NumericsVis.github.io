@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numerical Method Visualizer</title>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+    <div>
+        <h1 class = "title">Numerical Methods</h1>
+        <p>(because why not)</p>
+    </div>
+    <div id="controls">
+        <label>Sorting Algorithm: </label>
+        <select name="Model" id="sortingAlgoInput">
+            <option value="euler">Euler Method</option>
+        </select>
+        <label>Number of elements: </label>
+        <input id="numberOfElementsInput" type="number" min="0" size="8" value="50" step="1"/>
+        <label>Delay (in ms): </label>
+        <input id="delayInput" type="number" min="0" size="8" value="10"/>
+        <button id="randomizeBtn">Randomize</button>
+        <button id="startBtn">Start</button>
+    </div>
+    <canvas id="canvas" width="1000" height="600">Canvas not supported</canvas>
+    <p>View on <a href="https://github.com/vivCoding/sorting_viz" target="_blank">GitHub</a></p>
+</body>
+<script src="src/index.js"></script>
+<script src="src/sorts.js"></script>
+</html>
