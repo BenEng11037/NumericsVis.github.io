@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,24 +9,25 @@
 </head>
 <body>
     <div>
-        <h1 class = "title">Numerical Methods</h1>
+        <h1 class="title">Numerical Methods</h1>
         <p>In Progress</p>
     </div>
     <div id="controls">
-        <label>Sorting Algorithm: </label>
+        <label>Method: </label>
         <select name="Model" id="sortingAlgoInput">
-            <option value="euler">Euler Method</option>
+            <option value="Euler Method">Euler Method</option>
         </select>
-        <label>Number of elements: </label>
-        <input id="numberOfElementsInput" type="number" min="0" size="8" value="50" step="1"/>
+        <label>Number of steps: </label>
+        <input id="numberOfSteps" type="number" min="0" size="8" value="1000" step="1"/>
+        <label>Step size (h): </label>
+        <input id="stepSize" type="number" min="0" size="8" value="0.01" step="0.01"/>
         <label>Delay (in ms): </label>
         <input id="delayInput" type="number" min="0" size="8" value="10"/>
-        <button id="randomizeBtn">Randomize</button>
         <button id="startBtn">Start</button>
     </div>
     <canvas id="canvas" width="1000" height="600">Canvas not supported</canvas>
     <p>View on <a href="https://github.com/vivCoding/sorting_viz" target="_blank">GitHub</a></p>
+    <script src="src/index.js"></script>
+    <script src="src/methods.js"></script>
 </body>
-<script src="src/index.js"></script>
-<script src="src/sorts.js"></script>
 </html>
