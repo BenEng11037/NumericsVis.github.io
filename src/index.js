@@ -4,7 +4,7 @@ var ctx = canvas.getContext("2d");
 var width = canvas.width, height = canvas.height;
 var backgroundColor = "rgb(49, 49, 49)";
 var numberOfSteps = parseInt(document.getElementById("numberOfSteps").value); // Initialize with input value
-var scaleFactor = width / numberOfSteps;  // Initial scale factor
+var scaleFactor = 10;// width / numberOfSteps;  // Initial scale factor
 
 function clearCanvas() {
     ctx.beginPath();
