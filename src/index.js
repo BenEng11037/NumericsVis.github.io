@@ -80,13 +80,13 @@ function stopRunning() {
 function drawPoint(x, y) {
     console.log(`Drawing point at (${x}, ${y})`);
     ctx.fillStyle = "white";
-    ctx.fillRect(x * scaleFactor, height - y * scaleFactor, 2, 2);  // Adjust scaling as necessary
+    ctx.fillRect(x * scaleFactor,  y * scaleFactor, 2, 2);  // Adjust scaling as necessary
 }
 
 function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
-    ctx.moveTo(x1 * scaleFactor, height - y1 * scaleFactor);
-    ctx.lineTo(x2 * scaleFactor, height - y2 * scaleFactor);
+    ctx.moveTo(x1 * scaleFactor,  y1 * scaleFactor);
+    ctx.lineTo(x2 * scaleFactor,y2 * scaleFactor);
     ctx.strokeStyle = "white";
     ctx.stroke();
 }
