@@ -30,7 +30,7 @@ numberOfStepsInput.onchange = e => {
     let n = parseInt(e.target.value);
     if (n != null && numberOfSteps != n) {
         numberOfSteps = n;
-        scaleFactor = width / numberOfSteps;  // Update scale factor
+        scaleFactor = 10;//width / numberOfSteps;  // Update scale factor
         clearCanvas();
     }
 }
